@@ -42,28 +42,18 @@ function doFetch(){
 		nav.appendChild(navCurrency);
 	}
 
+	//drop-down
+	let currencyDrop = document.querySelector('.CurrencyChooser-select');
+	for(let country of Object.keys(rates[0])){
+		let countryOpt = document.createElement('option');
+		countryOpt.textContent = country;
+		currencyDrop.appendChild(countryOpt);
+	}
 
 
 		// render(rates)
 	});
 }
 
-
-// function render(rates){
-// 	let firstFourRates = rates.slice(0, 4);
-// 	const currencyName = Object.keys(rates);
-// 	const values = Object.values(rates);
-	// let chart = document.querySelector('.BarContainer');
-	// chart.innerHTML = "";
-	// for(let rate of firstFourRates){
-	// 	let bar = document.createElement('div');
-	// 	let baseHeight = 100;
-	// 	bar.classList.add('Bar');
-	// 	bar.style.height = baseHeight + 'px';
-	// 	bar.textContent = currencyName;
-	// 	chart.appendChild(bar);
-// 	}
-
-// }
 
 
