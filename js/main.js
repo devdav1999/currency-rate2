@@ -21,6 +21,8 @@ function doFetch(){
 	// create graphs
 		
 	let chart = document.querySelector('.BarContainer');
+
+	
 	chart.innerHTML = "";
 	for(let country of mainCountries){
 		console.log(country);
@@ -38,8 +40,21 @@ function doFetch(){
 	for(let country of Object.keys(rates[0])){
 		let navCurrency = document.createElement('div');
 		navCurrency.classList.add('countrySelection');
-		navCurrency.textContent = country;
+		navCurrency.textContent = country; 
+		navCurrency.onclick = () => {
+			mainCountries.push(country);
+			console.log('testing on click');
+			console.log(country);
+			let bar = document.createElement('div');
+			let baseHeight = ((1.00/rates[0][country]) * 100);
+			bar.classList.add('Bar');
+			bar.style.height = baseHeight + '%';
+			bar.textContent = country;
+			chart.appendChild(bar);
+		 }
+
 		nav.appendChild(navCurrency);
+		
 	}
 
 	//drop-down
