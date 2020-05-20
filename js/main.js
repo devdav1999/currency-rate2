@@ -35,6 +35,9 @@ function doFetch(baseCurrency){
 		bar.classList.add('Bar');
 		bar.style.height = baseHeight + '%';
 		bar.textContent = country;
+		bar.addEventListener("click", function(event){
+			alert('1 ' + baseCurrency + ' =' + rates[0][country] + ' ' + country);
+		})
 		chart.appendChild(bar);
 		}
 
@@ -55,6 +58,9 @@ function doFetch(baseCurrency){
 			bar.classList.add('Bar');
 			bar.style.height = baseHeight + '%';
 			bar.textContent = country;
+			bar.addEventListener("click", function(event){
+				alert('1 ' + baseCurrency + ' =' + rates[0][country] + ' ' + country);
+			})
 			chart.appendChild(bar);
 		 }
 
