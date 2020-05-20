@@ -1,14 +1,18 @@
 console.log('running js for currency rates');
 
-doFetch()
+let baseCurrency = '';
+let mainCountries = ["HKD", "USD", "AUD", "GBP", "CAD"];
 
-// let rates = []
 
-function doFetch(){
+doFetch('EUR')
+
+
+
+function doFetch(baseCurrency){
 	let rates = [];
-	let mainCountries = ["HKD", "USD", "AUD", "GBP", "CAD"];
+	// let mainCountries = ["HKD", "USD", "AUD", "GBP", "CAD"];
 
-	fetch('https://api.exchangeratesapi.io/latest')
+	fetch('https://api.exchangeratesapi.io/latest?base=' + baseCurrency)
 	.then(response => response.json())
 	.then(data => {
 		console.log('Got the data!');
@@ -37,6 +41,7 @@ function doFetch(){
 		
 	//currency-navigation 
 	let nav = document.querySelector('.currencyNav');
+	nav.innerHTML = "";
 	for(let country of Object.keys(rates[0])){
 		let navCurrency = document.createElement('div');
 		navCurrency.classList.add('countrySelection');
@@ -66,9 +71,13 @@ function doFetch(){
 	}
 
 
-		// render(rates)
+		
 	});
 }
 
 
-
+function changebase() {
+	baseCurrency = event.target.value;
+	console.log(mainCountries);
+	doFetch(baseCurrency);
+}
