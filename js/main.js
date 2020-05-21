@@ -45,23 +45,29 @@ function doFetch(baseCurrency){
 	//currency-navigation 
 	let nav = document.querySelector('.currencyNav');
 	nav.innerHTML = "";
+	let i = mainCountries
 	for(let country of Object.keys(rates[0])){
 		let navCurrency = document.createElement('div');
 		navCurrency.classList.add('countrySelection');
 		navCurrency.textContent = country; 
 		navCurrency.onclick = () => {
-			mainCountries.push(country);
-			console.log('testing on click');
-			console.log(country);
-			let bar = document.createElement('div');
-			let baseHeight = ((1.00/rates[0][country]) * 100);
-			bar.classList.add('Bar');
-			bar.style.height = baseHeight + '%';
-			bar.textContent = country;
-			bar.addEventListener("click", function(event){
-				alert('1 ' + baseCurrency + ' =' + rates[0][country] + ' ' + country);
-			})
-			chart.appendChild(bar);
+				if (mainCountries[i] !== country){
+					mainCountries.push(country);
+					console.log('testing on click');
+					console.log(country);
+					let bar = document.createElement('div');
+					let baseHeight = ((1.00/rates[0][country]) * 100);
+					bar.classList.add('Bar');
+					bar.style.height = baseHeight + '%';
+					bar.textContent = country;
+					bar.addEventListener("click", function(event){
+						alert('1 ' + baseCurrency + ' =' + rates[0][country] + ' ' + country);
+					})
+					chart.appendChild(bar);
+			}
+				else {
+					mainCountries.pop();
+				}
 		 }
 
 		nav.appendChild(navCurrency);
