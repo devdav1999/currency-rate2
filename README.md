@@ -6,6 +6,9 @@ It is a bar graph with of the currency rate from data fetched from the exchange 
 
 API: https://api.exchangeratesapi.io/latest
 
+Clicking on a currency abbreviation will populate a bar inside the bar container along with the default bars already inside.
+
+
 Clicking on an individual graph will alert the user of the current rate of the base currency against the currency targeted.
 
 Here is a screenshot of the bar graph in action.
